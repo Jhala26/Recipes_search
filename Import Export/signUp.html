@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+
+    <style>
+         form{
+            display: grid;
+            width: 300px;
+            margin: auto;
+            padding-top: 30px;
+            gap: 15px;
+        }
+        input{
+            font-size: 20px;
+        }
+        #cont{
+            width: 400px;
+            margin: auto;
+            margin-top: 50px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            height: 400px;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+    
+
+</head>
+<body>
+    <h1>SignUp</h1>
+    <div id="cont">
+    <form onsubmit="Register(event)">
+        <input type="text" placeholder="name" id="name">
+        <input type="email" placeholder="Email" id="email">
+        <input type="password" placeholder="password" id="pass">
+        <input type="text" placeholder="UserName" id="userName">
+        <input type="number" placeholder="Mobile" id="num">
+        <input type="text" placeholder="Description" id="desc">
+        <input type="submit">
+    </form>
+</div>
+</body>
+</html>
+<script>
+
+    let details = JSON.parse(localStorage.getItem("signup")) || [];
+
+    function Register(event){
+    event.preventDefault();
+
+    let signup_data = {
+
+     name : document.getElementById("name").value,
+     email : document.getElementById("email").value,
+     password : document.getElementById("pass").value,
+     userName : document.getElementById("userName").value,
+     Mobile : document.getElementById("num").value,
+     description : document.getElementById("desc").value
+
+    };
+
+    details.push(signup_data);
+    localStorage.setItem("signup",JSON.stringify(details));
+    
+    window.location.href = "login.html";
+
+}
+</script>
+
+
+

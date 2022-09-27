@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+
+    <style>
+        form{
+            display: grid;
+            width: 300px;
+            margin: auto;
+            padding-top: 30px;
+            gap: 15px;
+        }
+        a{
+            text-align: center;
+            text-decoration: none;
+            font-size: 20px;
+            background-color: teal;
+            color: white;
+            width: 100px;
+            margin: auto;
+        }
+        input{
+            font-size: 20px;
+        }
+        #cont{
+            width: 400px;
+            margin: auto;
+            margin-top: 50px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            height: 200px;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+    
+
+</head>
+<body>
+    <h1>Login</h1>
+    <div id="cont">
+    <form onsubmit="login(event)">
+        <input type="text" placeholder="userName" id="userN">
+        <input type="password" placeholder="password" id="password">
+        <input type="submit">
+
+        <a href="signUp.html">signUp</a>
+    </form>
+</div>
+</body>
+</html>
+
+<script>
+let details = JSON.parse(localStorage.getItem("signup")) || [];
+
+function login(event){
+    event.preventDefault();
+
+    let login_Data ={
+        username : document.getElementById("userN").value,
+        password : document.getElementById("password").value,
+    }
+
+    details.forEach((elm)=>{
+        // console.log(elm);
+
+        if(login_Data.username == elm.userName && login_Data.password == elm.password){
+            localStorage.setItem("verified",JSON.stringify(elm));
+            window.location.href = "index.html";
+        }
+        else{
+            alert("Invalid Input");
+        }
+    })
+
+}   
+</script>
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+    <link rel="stylesheet" href="navbar.css">
+
+    <style>
+        #header{
+            text-align: center;
+            font-size: 40px;
+        }
+        #container{
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 400px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+    
+
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <h1 id="header"></h1>
+
+    <div id="container"></div>
+
+</body>
+</html>
+<script type="module">
+
+    let data = JSON.parse(localStorage.getItem("verified")) || [];
+    let container = document.getElementById("container");
+
+import navbar from "./navbar.js";
+let nav = document.getElementById("navbar");
+nav.innerHTML = navbar();
+
+let head = document.getElementById("header");
+header.innerText = "Profile";
+
+
+let div = document.createElement("div");
+let name = document.createElement("h2");
+name.innerText = `Name : ${data.name}`;
+let email = document.createElement("h3");
+email.innerText = `Email : ${data.email}`;
+let username = document.createElement("h3");
+username.innerText = `User Name : ${data.userName}`;
+let mobile = document.createElement("h3");
+mobile.innerText = `Mobile : ${data.Mobile}`;
+let desc = document.createElement("h3");
+desc.innerText = `Description : ${data.description}`;
+
+div.append(name,username,email,mobile,desc);
+container.append(div);
+
+</script>
+
